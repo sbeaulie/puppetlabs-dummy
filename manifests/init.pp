@@ -1,6 +1,6 @@
 class dummy( $aparam = 'something' ) {
-  notify { 'Hello World': }
-  $this_var = 'nothing'
+  notify { "Hello World": }
+  $this_var = 'false'
   $aVar = '${this_var}-sInSingleQuotedString'
   notify { $aVar:
    require => Notify['Hello World'],
