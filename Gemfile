@@ -13,7 +13,14 @@ end
 group :development, :test do
   gem 'rake',                    :require => false
   gem 'rspec-puppet',            :require => false
-  gem 'puppetlabs_spec_helper',  :require => false
+  gem 'puppetlabs_spec_helper',  :github => 'justinstoller/puppetlabs_spec_helper',
+                                 :branch => 'compute_version',
+                                 :require => false
+
+  gem 'puppet-blacksmith',       :github => 'justinstoller/puppet-blacksmith',
+                                 :branch => 'env_vars_for_forge',
+                                 :require => false
+
   gem 'puppet-lint',             :require => false
   gem 'pry',                     :require => false
   gem 'simplecov',               :require => false
