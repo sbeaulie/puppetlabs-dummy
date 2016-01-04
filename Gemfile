@@ -31,6 +31,7 @@ group :system_tests do
   gem 'beaker-rspec',                 :require => false
   gem 'serverspec',                   :require => false
   gem 'beaker-puppet_install_helper', :require => false
+  gem "beaker-hostgenerator", *location_for(ENV['BEAKER_HOSTGENERATOR_VERSION'] || "~> 0.2")
 end
 
 if facterversion = ENV['FACTER_GEM_VERSION']
