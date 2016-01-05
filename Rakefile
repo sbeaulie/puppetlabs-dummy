@@ -18,7 +18,7 @@ task :gen_nodeset do
 
   agent_target = ENV['TEST_TARGET']
   if agent_target
-    master_target = ENV['MASTER_TEST_TARGET'] || 'redhat7-64m'
+    master_target = ENV['MASTER_TEST_TARGET'] || 'redhat7-64mdcl'
     targets = "#{master_target}-#{agent_target}"
     cli = BeakerHostGenerator::CLI.new([targets])
     nodeset_dir = "tmp/nodesets"
