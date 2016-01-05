@@ -1,16 +1,24 @@
+# vim:ft=ruby
+
 source ENV['GEM_SOURCE'] || "https://rubygems.org"
 
-def location_for(place, fake_version = nil)
+def location_for(place, version = nil)
   if place =~ /^(git[:@][^#]*)#(.*)/
-    [fake_version, { :git => $1, :branch => $2, :require => false }].compact
+    [fake_version, { :git => $1, :branch => $2}].compact
   elsif place =~ /^file:\/\/(.*)/
-    ['>= 0', { :path => File.expand_path($1), :require => false }]
+    ['>= 0', { :path => File.expand_path($1)}]
   else
-    [place, { :require => false }]
+    [place, version].compact
   end
 end
 
-group :development, :test do
+group :development, :unit_tests do
+  gem 'rspec-core', '3.1.7',     :require => false
+  gem 'puppetlabs_spec_helper',  :require => false
+  gem 'simplecov',               :require => false
+  gem 'puppet_facts',            :require => false
+  gem 'json',                    :require => false
+  gem 'metadata-json-lint',      :require => false
   gem 'rake',                    :require => false
   gem 'rspec-puppet',            :require => false
   gem 'puppetlabs_spec_helper',  :github => 'justinstoller/puppetlabs_spec_helper',
@@ -27,28 +35,17 @@ group :development, :test do
 end
 
 group :system_tests do
-  gem 'beaker',                       :require => false
-  gem 'beaker-rspec',                 :require => false
-  gem 'serverspec',                   :require => false
-  gem 'beaker-puppet_install_helper', :require => false
-  gem "beaker-hostgenerator", *location_for(ENV['BEAKER_HOSTGENERATOR_VERSION'] || "~> 0.2")
+  gem 'beaker-rspec', *location_for(ENV['BEAKER_VERSION']),          :require => false
+  gem 'serverspec',                                                    :require => false
+  gem 'beaker-puppet_install_helper',                                  :require => false
+  gem 'master_manipulator',                                            :require => false
+  gem 'beaker-hostgenerator', *location_for(ENV['BEAKER_VERSION']),  :require => false
 end
 
-if facterversion = ENV['FACTER_GEM_VERSION']
-  gem 'facter', facterversion, :require => false
-else
-  gem 'facter', :require => false
-end
-
-if puppetversion = ENV['PUPPET_GEM_VERSION']
-  gem 'puppet', puppetversion, :require => false
-else
-  gem 'puppet', :require => false
-end
-
+gem 'facter', *location_for(ENV['FACTER_GEM_VERSION']), require => false
+gem 'puppet', *location_for(ENV['PUPPET_GEM_VERSION']), require => false
 
 if File.exists? "#{__FILE__}.local"
   eval(File.read("#{__FILE__}.local"), binding)
 end
 
-# vim:ft=ruby
