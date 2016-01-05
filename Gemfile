@@ -35,6 +35,6 @@ end
 
 
 
-gem 'facter', *location_for(ENV['FACTER_GEM_VERSION']), require => false
-gem 'puppet', *location_for(ENV['PUPPET_GEM_VERSION']), require => false
+gem 'facter', *location_for(ENV['FACTER_GEM_VERSION'])
+gem 'puppet', *location_for(ENV['PUPPET_GEM_VERSION'])
 
