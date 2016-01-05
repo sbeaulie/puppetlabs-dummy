@@ -3,8 +3,8 @@ Gemfile:
   optional:
     ':development, :unit_tests':
       - gem: 'puppetlabs_spec_helper'
-        github: 'justinstoller/puppetlabs_spec_helper'
+        git: 'git://github.com/justinstoller/puppetlabs_spec_helper'
         branch: 'compute_version'
       - gem: 'puppet-blacksmith'
-        github: 'justinstoller/puppet-blacksmith'
+        git: 'git://github.com/justinstoller/puppet-blacksmith'
         branch: 'env_vars_for_forge'
