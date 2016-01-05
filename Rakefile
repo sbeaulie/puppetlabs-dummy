@@ -22,7 +22,7 @@ task :gen_nodeset do
     master_target = ENV['MASTER_TEST_TARGET'] || 'redhat7-64m'
     targets = "#{master_target}-#{agent_target}"
     cli = BeakerHostGenerator::CLI.new([targets])
-    nodeset_dir = 'tmp/nodesets'
+    nodeset_dir = "tmp/nodesets"
     nodeset = "#{nodeset_dir}/#{targets}-#{SecureRandom.uuid}.yaml"
     FileUtils.mkdir_p(nodeset_dir)
     File.open(nodeset, 'w') do |fh|
