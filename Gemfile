@@ -14,12 +14,10 @@ end
 
 group :development, :unit_tests do
   gem 'rspec-core', '3.1.7',     :require => false
-  gem 'puppetlabs_spec_helper',  :require => false
   gem 'simplecov',               :require => false
   gem 'puppet_facts',            :require => false
   gem 'json',                    :require => false
   gem 'metadata-json-lint',      :require => false
-  gem 'puppet-blacksmith',       :require => false
   gem 'puppetlabs_spec_helper',  :require => false, :git => 'git://github.com/justinstoller/puppetlabs_spec_helper', :branch => 'compute_version'
   gem 'puppet-blacksmith',       :require => false, :git => 'git://github.com/justinstoller/puppet-blacksmith', :branch => 'env_vars_for_forge'
 end
