@@ -1,5 +1,6 @@
 {
   "name": "puppetlabs-dummy",
+  "and": "# so any PR",
   "version": "1.1.1",
   "author": "puppetlabs",
   "summary": "Dummy Puppet module for testing",
